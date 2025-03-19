@@ -179,7 +179,7 @@ ExecStart=/path/to/app/venv/bin/gunicorn --workers 3 --bind unix:/run/flask-app.
 - сделать файл init.sh исполняемым и запустить ```sudo ./init.sh```
 - выполнить
 ```
-sudo systemctl daemon-reloa
+sudo systemctl daemon-reload
 sudo systemctl start pyapp.service
 sudo systemctl status pyapp.service
 ```
@@ -196,7 +196,19 @@ server {
     }
 }
 ```
-- создать симинк на этот файл в /etc/nginx/sites-enabled
+- создать симлинк на этот файл в /etc/nginx/sites-enabled
+- зайти в базу данных и выполнить команды
+```
+CREATE DATABASE demo;
+USE demo;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    email VARCHAR(100)
+);
+
+```
 - проверить и перезагрузить конфигурацию nginx
 - выполнить запрос
 ```
