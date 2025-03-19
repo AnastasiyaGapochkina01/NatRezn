@@ -23,6 +23,15 @@ server.listen(port, () => {
 2) Запустить приложение на python:
 - в домашней директории создать папку app
 - в папке app создать файлы
+init.sh
+```
+#!/usr/bin/env bash
+
+apt update && apt install -y -q python3-venv python3-pip
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
 pyapp.service
 ```
 [Unit]
@@ -167,6 +176,7 @@ ExecStart=/path/to/app/venv/bin/gunicorn --workers 3 --bind unix:/run/flask-app.
 ```
 нужно заменить __/path/to/app__ на путь к созданной директории app
 - скопировать файл pyapp.service в /etc/systemd/system
+- сделать файл init.sh исполняемым и запустить ```sudo ./init.sh```
 - выполнить
 ```
 sudo systemctl daemon-reloa
