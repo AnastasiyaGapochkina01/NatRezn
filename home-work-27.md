@@ -17,6 +17,22 @@ server.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
 });
 ```
+
+/etc/systemd/system/nodeapp.service
+```
+[Unit]
+Description=Node.js Web Server
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/nodejsapp
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node server.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
 - запустить server.js с помощью systemd-юнита
   - проверить, на каком порту запустился сервис
 - настроить nginx так, чтобы он перенаправлял входящие запросы на запущенное приложение
