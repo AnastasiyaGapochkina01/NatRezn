@@ -29,6 +29,7 @@ anestesia@projects-dev:~$ curl 127.0.0.1:5000
 Текущая директория: /home/anestesia/python
 ```
 то все ОК
+
 2) Дан код на nodejs:
 - server.js
 ```
